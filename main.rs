@@ -8,12 +8,11 @@ fn clock_ms() -> u32 {
 
 fn wasmtime_coremark(wasm: &[u8]) -> f32 {
     let mut store = <wasmtime::Store<()>>::default();
-    let engine = store.engine();
-    let mut linker = wasmtime::Linker::new(engine);
+    let mut linker = wasmtime::Linker::new(store.engine());
     linker
         .func_wrap("env", "clock_ms", clock_ms)
         .expect("Wasmtime: failed to define `clock_ms` host function");
-    let module = wasmtime::Module::new(engine, wasm)
+    let module = wasmtime::Module::new(store.engine(), wasm)
         .expect("Wasmtime: failed to compile and validate coremark Wasm binary");
     linker
         .instantiate(&mut store, &module)
@@ -25,8 +24,8 @@ fn wasmtime_coremark(wasm: &[u8]) -> f32 {
 }
 
 fn wasmi_coremark(wasm: &[u8]) -> f32 {
-    let mut store = wasmi::Store::default();
-    let mut linker = <wasmi::Linker<()>>::new(store.engine());
+    let mut store = <wasmi::Store<()>>::default();
+    let mut linker = wasmi::Linker::new(store.engine());
     linker
         .func_wrap("env", "clock_ms", clock_ms)
         .expect("Wasmi: failed to define `clock_ms` host function");
