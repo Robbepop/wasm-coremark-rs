@@ -25,22 +25,19 @@ fn wasmtime_coremark(wasm: &[u8]) -> f32 {
 }
 
 fn wasmi_coremark(wasm: &[u8]) -> f32 {
-    use wasmi::core::F32;
-    let config = wasmi::Config::default();
-    let engine = wasmi::Engine::new(&config);
-    let mut store = wasmi::Store::new(&engine, ());
-    let mut linker = <wasmi::Linker<()>>::new(&engine);
+    let mut store = wasmi::Store::default();
+    let mut linker = <wasmi::Linker<()>>::new(store.engine());
     linker
         .func_wrap("env", "clock_ms", clock_ms)
         .expect("Wasmi: failed to define `clock_ms` host function");
-    let module = wasmi::Module::new(&engine, wasm)
+    let module = wasmi::Module::new(store.engine(), wasm)
         .expect("Wasmi: failed to compile and validate coremark Wasm binary");
     let result = linker
         .instantiate(&mut store, &module)
         .expect("Wasmi: failed to instantiate coremark Wasm module")
         .ensure_no_start(&mut store)
         .expect("Wasmi: failed to start Wasm module instance")
-        .get_typed_func::<(), F32>(&mut store, "run")
+        .get_typed_func::<(), f32>(&mut store, "run")
         .expect("Wasmi: could not find \"run\" function export")
         .call(&mut store, ())
         .expect("Wasmi: failed to execute \"run\" function");
