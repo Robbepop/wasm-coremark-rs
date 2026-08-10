@@ -24,19 +24,19 @@ Enable Wasmtime via `wasmtime`, Winch via `winch` and Pulley via `pulley` crate 
 
 ### Scores (Apple M2 Pro)
 
-| Runtime            | Version         | Type        | Score |
-|:-------------------|----------------:|:-----------:|------:|
-| [Wasmtime] Cranelift | `v46`           | JIT         | 30086 |
-| [Wasmtime] Winch     | `v46`           | JIT         | 13598 |
-| [Wasm3]              | `v0.5`          | Interpreter |  2830 |
-| [Wasmi] v2           | `v2.0.0-beta.7` | Interpreter |  2820 |
-| [Stitch]             | `v0.1`          | Interpreter |  2241 |
-| [Wasmi] v1           | `v1.0.9`        | Interpreter |  2034 |
-| [Wasmtime] Pulley    | `v46`           | Interpreter |  1786 |
-| [WAMR] (fast)        | `v2.3`          | Interpreter |  1420 |
-| [Tinywasm]           | `v0.9`          | Interpreter |   940 |
-| [SpaceWasm]          | `v0.1`          | Interpreter |   440 |
-| [WasmEdge]           | `v0.14`         | Interpreter |   313 |
+| Runtime              | Version          | Type        | Score |
+|:---------------------|-----------------:|:-----------:|------:|
+| [Wasmtime] Cranelift | `v46`            | JIT         | 30086 |
+| [Wasmtime] Winch     | `v46`            | JIT         | 13598 |
+| [Wasmi] v2           | `v2.0.0-beta.10` | Interpreter |  4286 |
+| [Stitch]             | `v0.1`           | Interpreter |  3023 |
+| [Wasm3]              | `v0.5`           | Interpreter |  2830 |
+| [Wasmi] v1           | `v1.0.9`         | Interpreter |  2034 |
+| [Wasmtime] Pulley    | `v46`            | Interpreter |  1786 |
+| [WAMR] (fast)        | `v2.3`           | Interpreter |  1420 |
+| [Tinywasm]           | `v0.9`           | Interpreter |   940 |
+| [SpaceWasm]          | `v0.1`           | Interpreter |   440 |
+| [WasmEdge]           | `v0.14`          | Interpreter |   313 |
 
 [Wasmtime]: https://github.com/bytecodealliance/wasmtime
 [Wasm3]: https://github.com/wasm3/wasm3
@@ -51,10 +51,10 @@ Enable Wasmtime via `wasmtime`, Winch via `winch` and Pulley via `pulley` crate 
 
 | `portable-dispatch` | `indirect-dispatch` | Score |
 |:-------------------:|:-------------------:|------:|
-| ❌                  | ❌                  |  2820 |
-| ❌                  | ✅                  |  2357 |
-| ✅                  | ❌                  |  1133 |
-| ✅                  | ✅                  |  1764 |
+| ❌                  | ❌                  |  4286 |
+| ❌                  | ✅                  |  3960 |
+| ✅                  | ❌                  |  1135 |
+| ✅                  | ✅                  |  1765 |
 
 The `coremark-minimal.wasm` we are using here does not produce text output like [coremark][1], just the final test result. 
 
