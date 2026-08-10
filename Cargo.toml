@@ -17,7 +17,7 @@ v8 = { version = "152", optional = true }
 anyhow = "1"
 
 [dependencies.wasmi]
-version = "2.0.0-beta.9"
+version = "2.0.0-beta.10"
 default-features = false
 features = ["std", "validate"]
 optional = true
