@@ -9,14 +9,15 @@ name = "bm"
 path = "src/main.rs"
 
 [dependencies]
-wasmtime = { version = "46.0.0", optional = true }
+wasmtime = { version = "47.0.0", optional = true }
 makepad-stitch = { version = "0.1", optional = true }
 wasmi-v1 = { package = "wasmi", version = "1.0.9", optional = true }
-tinywasm = { version = "0.9", default-features = false, features = ["std", "archive", "parser"], optional = true }
+tinywasm = { version = "0.10", default-features = false, features = ["std", "archive", "parser"], optional = true }
+v8 = { version = "152", optional = true }
 anyhow = "1"
 
 [dependencies.wasmi]
-version = "2.0.0-beta.7"
+version = "2.0.0-beta.9"
 default-features = false
 features = ["std", "validate"]
 optional = true
