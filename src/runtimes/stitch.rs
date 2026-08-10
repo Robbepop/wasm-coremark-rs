@@ -4,7 +4,7 @@ use makepad_stitch::{Engine, Func, Linker, Module, Store, Val};
 pub fn stitch_coremark(wasm: &[u8]) -> f32 {
     let engine = Engine::new();
     let mut store = <Store>::new(engine);
-    let mut linker = Linker::new();
+    let mut linker = Linker::default();
     linker.define("env", "clock_ms", Func::wrap(&mut store, clock_ms));
     let module = Module::new(store.engine(), wasm)
         .expect("Stitch: failed to compile and validate coremark Wasm binary");

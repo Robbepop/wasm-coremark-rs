@@ -1294,8 +1294,7 @@ checksum = "dae608c151f68243f2b000364e1f7b186d9c29845f7d2d85bd31b9ad77ad552b"
 [[package]]
 name = "makepad-stitch"
 version = "0.1.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "aa7ba762e43513e765ad4d15adfbc5e7456f3e59d357fb0a36fe3efa6e560159"
+source = "git+https://github.com/Robbepop/stitch?branch=v0.1-dev#522e2847af2ce0c17ef00ef8d22d7f8fa4733485"
 
 [[package]]
 name = "memchr"
